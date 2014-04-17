@@ -301,55 +301,55 @@ This module tries to provide a coherent API to bring together the various JSON
 modules currently on CPAN. This module will allow you to code to any JSON API
 and have it work regardless of which JSON module is actually installed.
 
-	use JSON::Any;
+    use JSON::Any;
 
-	my $j = JSON::Any->new;
+    my $j = JSON::Any->new;
 
-	$json = $j->objToJson({foo=>'bar', baz=>'quux'});
-	$obj = $j->jsonToObj($json);
-
-or
-
-	$json = $j->encode({foo=>'bar', baz=>'quux'});
-	$obj = $j->decode($json);
+    $json = $j->objToJson({foo=>'bar', baz=>'quux'});
+    $obj = $j->jsonToObj($json);
 
 or
 
-	$json = $j->Dump({foo=>'bar', baz=>'quux'});
-	$obj = $j->Load($json);
+    $json = $j->encode({foo=>'bar', baz=>'quux'});
+    $obj = $j->decode($json);
 
 or
 
-	$json = $j->to_json({foo=>'bar', baz=>'quux'});
-	$obj = $j->from_json($json);
+    $json = $j->Dump({foo=>'bar', baz=>'quux'});
+    $obj = $j->Load($json);
+
+or
+
+    $json = $j->to_json({foo=>'bar', baz=>'quux'});
+    $obj = $j->from_json($json);
 
 or without creating an object:
 
-	$json = JSON::Any->objToJson({foo=>'bar', baz=>'quux'});
-	$obj = JSON::Any->jsonToObj($json);
+    $json = JSON::Any->objToJson({foo=>'bar', baz=>'quux'});
+    $obj = JSON::Any->jsonToObj($json);
 
-On load, JSON::Any will find a valid JSON module in your @INC by looking 
+On load, JSON::Any will find a valid JSON module in your @INC by looking
 for them in this order:
 
     Cpanel::JSON::XS
-	JSON::XS 
+    JSON::XS
     JSON::PP
-	JSON 
-	JSON::DWIW 
+    JSON
+    JSON::DWIW
 
 And loading the first one it finds.
 
 You may change the order by specifying it on the C<use JSON::Any> line:
 
-	use JSON::Any qw(DWIW XS CPANEL JSON PP);
+    use JSON::Any qw(DWIW XS CPANEL JSON PP);
 
-Specifying an order that is missing modules will prevent those module from 
+Specifying an order that is missing modules will prevent those module from
 being used:
 
-	use JSON::Any qw(CPANEL PP); # same as JSON::MaybeXS
+    use JSON::Any qw(CPANEL PP); # same as JSON::MaybeXS
 
-This will check in that order, and will never attempt to load JSON::XS, 
-JSON.pm, or JSON::DWIW. This can also be set via the $ENV{JSON_ANY_ORDER} 
+This will check in that order, and will never attempt to load JSON::XS,
+JSON.pm, or JSON::DWIW. This can also be set via the $ENV{JSON_ANY_ORDER}
 environment variable.
 
 JSON::Syck has been deprecated by it's author, but in the attempt to still
@@ -357,11 +357,11 @@ stay relevant as a "Compatibility Layer" JSON::Any still supports it. This suppo
 however has been made optional starting with JSON::Any 1.19. In deference to a
 bug request starting with JSON 1.20 JSON::Syck and other deprecated modules
 will still be installed, but only as a last resort and will now include a
-warning. 
+warning.
 
-    use JSON::Any qw(Syck XS JSON); 
-    
-or 
+    use JSON::Any qw(Syck XS JSON);
+
+or
 
     $ENV{JSON_ANY_ORDER} = 'Syck XS JSON';
 
@@ -369,21 +369,21 @@ or
 WARNING: If you call JSON::Any with an empty list
 
     use JSON::Any ();
-    
+
 It will skip the JSON package detection routines and will die loudly that it
 couldn't find a package.
 
 =head1 WARNING
 
-JSON::XS 3.0 or higher has a conflict with any version of JSON.pm less than 2.90 
-when  you use JSON.pm's C<-support_by_pp> option, which JSON::Any enables by 
+JSON::XS 3.0 or higher has a conflict with any version of JSON.pm less than 2.90
+when  you use JSON.pm's C<-support_by_pp> option, which JSON::Any enables by
 default.
 
-This situation should only come up with JSON::Any if you have JSON.pm 2.61 or 
-lower and JSON::XS 3.0 or higher installed and you for JSON::Any to use JSON.pm 
+This situation should only come up with JSON::Any if you have JSON.pm 2.61 or
+lower and JSON::XS 3.0 or higher installed and you for JSON::Any to use JSON.pm
 via C<use JSON::Any qw(JSON);> or the C<JSON_ANY_ORDER> environment variable.
 
-If you run into an issue where you're getting recursive inheritance errors in a 
+If you run into an issue where you're getting recursive inheritance errors in a
 Types::Serialiser package, please try upgrading JSON.pm to 2.90 or higher.
 
 =head1 DEPRECATION
@@ -461,8 +461,8 @@ sub handlerType {
 
 =item C<handler>
 
-Takes no arguments, if called on an object returns the internal JSON::* 
-object in use.  Otherwise returns the JSON::* package we are using for 
+Takes no arguments, if called on an object returns the internal JSON::*
+object in use.  Otherwise returns the JSON::* package we are using for
 class methods.
 
 =back
@@ -559,7 +559,7 @@ sub objToJson {
 
 =item C<encode>
 
-Aliases for C<objToJson>, can be used interchangeably, regardless of the 
+Aliases for C<objToJson>, can be used interchangeably, regardless of the
 underlying JSON module.
 
 =back
@@ -615,7 +615,7 @@ sub jsonToObj {
 
 =item C<decode>
 
-Aliases for C<jsonToObj>, can be used interchangeably, regardless of the 
+Aliases for C<jsonToObj>, can be used interchangeably, regardless of the
 underlying JSON module.
 
 =back
@@ -634,13 +634,13 @@ __END__
 
 =for :stopwords Dimas Wistow mst
 
-This module came about after discussions on irc.perl.org about the fact 
+This module came about after discussions on irc.perl.org about the fact
 that there were now six separate JSON perl modules with different interfaces.
 
-In the spirit of Class::Any, JSON::Any was created with the considerable 
+In the spirit of Class::Any, JSON::Any was created with the considerable
 help of Matt 'mst' Trout.
 
-Simon Wistow graciously supplied a patch for backwards compatibility with JSON::XS 
+Simon Wistow graciously supplied a patch for backwards compatibility with JSON::XS
 versions previous to 2.01
 
 San Dimas High School Football Rules!

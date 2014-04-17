@@ -71,7 +71,7 @@ sub run_tests_for {
     run_tests_for 'XS';
 }
 
-{ 
+{
     require Test::Without::Module;
     Test::Without::Module->import('JSON::XS');
     run_tests_for $_ for (qw(PP JSON CPANEL DWIW));

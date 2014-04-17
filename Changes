@@ -22,7 +22,7 @@ Revision history for {{$dist->name}}
 1.30    2013-06-15
     * Add support for Cpanel::JSON::XS and JSON::PP. Fixes RT#85424 & RT#67967. (perigrin)
     * Fix documentation bug RT#86065.
-     
+
 1.29    2011-06-07
 	* Artificially bump our version number because an upstream author decided to not play nice. Fixes RT#68690 (perigrin)
 
@@ -37,7 +37,7 @@ Revision history for {{$dist->name}}
 
 1.25    2010-11-16
         * Fix the test suite to be 5.14 compatible (toddr)
-        
+
 1.24	2010-10-08
 	    * Fix the Build from where MI changed underneath me (perigrin)
 

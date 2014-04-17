@@ -52,7 +52,7 @@ sub test {
 
     plan 'no_plan' unless $ENV{JSON_ANY_RAN_TESTS};
     $ENV{JSON_ANY_RAN_TESTS} = 1;
-    
+
     for my $test_orig ( @round_trip ) {
         my $test = "[$test_orig]"; # make it an array
         my $data = eval { JSON::Any->jsonToObj($test) };
