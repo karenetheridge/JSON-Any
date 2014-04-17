@@ -1,11 +1,6 @@
-Makefile.old
-MANIFEST
-MANIFEST.bak
-META.yml
-Makefile
-blib
-pm_to_blib
-perl5
-JSON-Any-*
-.build
-local
+/.ackrc
+/.build/
+!.gitignore
+/.latest
+/JSON-Any-*/
+/JSON-Any-*.tar.gz
