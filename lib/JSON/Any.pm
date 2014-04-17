@@ -357,7 +357,7 @@ JSON.pm, or JSON::DWIW. This can also be set via the $ENV{JSON_ANY_ORDER}
 environment variable.
 
 JSON::Syck has been deprecated by it's author, but in the attempt to still
-stay relevant as a "Compat Layer" JSON::Any still supports it. This support
+stay relevant as a "Compatibility Layer" JSON::Any still supports it. This support
 however has been made optional starting with JSON::Any 1.19. In deference to a
 bug request starting with JSON 1.20 JSON::Syck and other deprecated modules
 will still be installed, but only as a last resort and will now include a
@@ -404,6 +404,8 @@ and frankly because the maintainer prefers the JSON::Any API.
 =over
 
 =item C<new>
+
+=for :stopwords recognised unicode
 
 Will take any of the parameters for the underlying system and pass them
 through. However these values don't map between JSON modules, so, from a
@@ -561,7 +563,7 @@ sub objToJson {
 
 =item C<encode>
 
-Aliases for objToJson, can be used interchangeably, regardless of the 
+Aliases for C<objToJson>, can be used interchangeably, regardless of the 
 underlying JSON module.
 
 =back
@@ -617,7 +619,7 @@ sub jsonToObj {
 
 =item C<decode>
 
-Aliases for jsonToObj, can be used interchangeably, regardless of the 
+Aliases for C<jsonToObj>, can be used interchangeably, regardless of the 
 underlying JSON module.
 
 =back
@@ -634,13 +636,15 @@ __END__
 
 =head1 ACKNOWLEDGEMENTS
 
+=for :stopwords Dimas Wistow mst
+
 This module came about after discussions on irc.perl.org about the fact 
 that there were now six separate JSON perl modules with different interfaces.
 
 In the spirit of Class::Any, JSON::Any was created with the considerable 
 help of Matt 'mst' Trout.
 
-Simon Wistow graciously supplied a patch for backwards compat with JSON::XS 
+Simon Wistow graciously supplied a patch for backwards compatibility with JSON::XS 
 versions previous to 2.01
 
 San Dimas High School Football Rules!
