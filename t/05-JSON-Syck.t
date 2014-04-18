@@ -1,5 +1,3 @@
-#!perl
-
 use strict;
 use Test::More;
 eval "use JSON::Any qw(Syck)";

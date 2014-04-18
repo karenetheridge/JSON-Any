@@ -1,4 +1,3 @@
-#!perl
 $!++;
 use strict;
 use Data::Dumper;
