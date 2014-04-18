@@ -348,14 +348,14 @@ being used:
 
     use JSON::Any qw(CPANEL PP); # same as JSON::MaybeXS
 
-This will check in that order, and will never attempt to load JSON::XS,
-JSON.pm, or JSON::DWIW. This can also be set via the $ENV{JSON_ANY_ORDER}
+This will check in that order, and will never attempt to load L<JSON::XS>,
+L<JSON.pm/JSON>, or L<JSON::DWIW>. This can also be set via the C<$ENV{JSON_ANY_ORDER}>
 environment variable.
 
-JSON::Syck has been deprecated by it's author, but in the attempt to still
+L<JSON::Syck> has been deprecated by its author, but in the attempt to still
 stay relevant as a "Compatibility Layer" JSON::Any still supports it. This support
 however has been made optional starting with JSON::Any 1.19. In deference to a
-bug request starting with JSON 1.20 JSON::Syck and other deprecated modules
+bug request starting with L<JSON.pm|JSON> 1.20, L<JSON::Syck> and other deprecated modules
 will still be installed, but only as a last resort and will now include a
 warning.
 
@@ -375,22 +375,22 @@ couldn't find a package.
 
 =head1 WARNING
 
-JSON::XS 3.0 or higher has a conflict with any version of JSON.pm less than 2.90
-when  you use JSON.pm's C<-support_by_pp> option, which JSON::Any enables by
+L<JSON::XS> 3.0 or higher has a conflict with any version of L<JSON.pm|JSON> less than 2.90
+when you use L<JSON.pm|JSON>'s C<-support_by_pp> option, which JSON::Any enables by
 default.
 
-This situation should only come up with JSON::Any if you have JSON.pm 2.61 or
-lower and JSON::XS 3.0 or higher installed and you for JSON::Any to use JSON.pm
-via C<use JSON::Any qw(JSON);> or the C<JSON_ANY_ORDER> environment variable.
+This situation should only come up with JSON::Any if you have L<JSON.pm|JSON> 2.61 or
+lower B<and> L<JSON::XS> 3.0 or higher installed, and you use L<JSON.pm|JSON>
+via C<< use JSON::Any qw(JSON); >> or the C<JSON_ANY_ORDER> environment variable.
 
 If you run into an issue where you're getting recursive inheritance errors in a
-Types::Serialiser package, please try upgrading JSON.pm to 2.90 or higher.
+L<Types::Serialiser> package, please try upgrading L<JSON.pm|JSON> to 2.90 or higher.
 
 =head1 DEPRECATION
 
-The original need for JSON::Any has been solved (quite some time ago
-actually). If you're producing new code it is recommended to use JSON.pm which
-will optionally use JSON::XS for speed purposes.
+The original need for L<JSON::Any> has been solved (quite some time ago
+actually). If you're producing new code it is recommended to use L<JSON.pm|JSON> which
+will optionally use L<JSON::XS> for speed purposes.
 
 JSON::Any will continue to be maintained for compatibility with existing code,
 and frankly because the maintainer prefers the JSON::Any API.
@@ -629,6 +629,7 @@ underlying JSON module.
 1;
 __END__
 
+=pod
 
 =head1 ACKNOWLEDGEMENTS
 
@@ -645,3 +646,4 @@ versions previous to 2.01
 
 San Dimas High School Football Rules!
 
+=cut
