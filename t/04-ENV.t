@@ -5,9 +5,6 @@ eval "use JSON::Any";
 if ($@) {
     plan skip_all => "$@";
 }
-else {
-    plan 'no_plan';
-}
 
 SKIP: {
     eval { require JSON; };
@@ -39,3 +36,5 @@ SKIP: {
     ok( $json->encode("dahut"), qq["dahut"] );
     is( $@, undef, 'no failure' );
 }
+
+done_testing;

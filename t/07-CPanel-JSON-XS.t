@@ -6,9 +6,6 @@ eval "use JSON::Any qw(CPANEL)";
 if ($@) {
     plan skip_all => "Cpanel::JSON::XS not installed: $@";
 }
-else {
-    plan tests => 24;
-}
 
 skip "Cpanel::JSON::XS not installed: $@", 1 if $@;
 diag("Testing Cpanel::JSON::XS backend");
@@ -66,3 +63,5 @@ is($js,'{"foo":true}');
 $obj = { foo => $json->false };
 $js = $json->objToJson($obj);
 is($js,'{"foo":false}');
+
+done_testing;

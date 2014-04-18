@@ -5,9 +5,6 @@ eval "use JSON::Any qw(DWIW)";
 if ($@) {
     plan skip_all => "JSON::DWIW not installed: $@";
 }
-else {
-        plan tests => 6;
-}
 
 diag("Testing JSON::DWIW backend");
 my ( $json, $js, $obj );
@@ -33,3 +30,5 @@ is($js,'{foo:true}');
 $obj = { foo => $json->false };
 $js = $json->objToJson($obj);
 is($js,'{foo:false}');
+
+done_testing;

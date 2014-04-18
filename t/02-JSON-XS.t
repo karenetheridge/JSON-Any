@@ -8,9 +8,6 @@ eval "use JSON::Any qw(XS)";
 if ($@) {
     plan skip_all => "JSON::XS not installed: $@";
 }
-else {
-    plan tests => 24;
-}
 
 skip "JSON::XS not installed: $@", 1 if $@;
 diag("Testing JSON::XS backend");
@@ -68,3 +65,5 @@ is($js,'{"foo":true}');
 $obj = { foo => $json->false };
 $js = $json->objToJson($obj);
 is($js,'{"foo":false}');
+
+done_testing;

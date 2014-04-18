@@ -19,6 +19,7 @@ my @backends = qw(XS JSON DWIW);
 # make sure we test the JSON::PP backend instead of XS, twice
 $ENV{PERL_JSON_BACKEND} = 0;
 
+# we are intentionally counting our tests here, to be safe
 plan tests => @backends * 2 * 4;
 
 test ($_) for @backends;

@@ -14,7 +14,6 @@ BEGIN {
     }
 
     # if we're here we have *something* that will work
-    plan tests => 7;
     use_ok('JSON::Any');
 }
 
@@ -26,3 +25,5 @@ can_ok( JSON::Any, qw(Dump Load ) );
 can_ok( JSON::Any, qw(encode decode ) );
 
 is( JSON::Any->objToJson( { foo => 'bar' } ), q[{"foo":"bar"}] );
+
+done_testing;

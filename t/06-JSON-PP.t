@@ -5,9 +5,6 @@ eval "use JSON::Any qw(PP)";
 if ($@) {
     plan skip_all => "JSON::PP not installed: $@";
 }
-else {
-    plan tests => 19;
-}
 
 diag("Testing JSON::PP backend");
 my ( $js, $obj );
@@ -85,3 +82,5 @@ is($js,'{"foo":true}');
 $obj = { foo => $json_obj->false };
 $js = $json_obj->objToJson($obj);
 is($js,'{"foo":false}');
+
+done_testing;
