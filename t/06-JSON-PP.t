@@ -2,9 +2,7 @@ $|++;
 use strict;
 use Test::More;
 eval "use JSON::Any qw(PP)";
-if ($@) {
-    plan skip_all => "JSON::PP not installed: $@";
-}
+plan skip_all => "JSON::PP not installed: $@" if $@;
 
 diag("Testing JSON::PP backend");
 my ( $js, $obj );

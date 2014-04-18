@@ -1,10 +1,8 @@
 use strict;
 use Test::More;
-eval "use JSON::Any";
 
-if ($@) {
-    plan skip_all => "$@";
-}
+eval "use JSON::Any";
+plan skip_all => "$@" if $@;
 
 SKIP: {
     eval { require JSON; };

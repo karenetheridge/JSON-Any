@@ -4,11 +4,7 @@ use Data::Dumper;
 use Test::More;
 
 eval "use JSON::Any";
-
-if ($@) {
-    plan skip_all => "$@";
-    exit;
-}
+plan skip_all => "$@" if $@;
 
 $Data::Dumper::Indent = 0;
 $Data::Dumper::Terse  = 1;

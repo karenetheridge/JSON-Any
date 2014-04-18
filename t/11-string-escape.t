@@ -4,7 +4,8 @@ use Data::Dumper;
 use Test::More;
 
 use Storable;
-use Test::Requires qw(JSON::Any);
+eval "use JSON::Any";
+plan skip_all => "$@" if $@;
 
 $Data::Dumper::Indent = 0;
 $Data::Dumper::Terse  = 1;

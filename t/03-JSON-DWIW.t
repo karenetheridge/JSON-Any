@@ -2,9 +2,7 @@ use strict;
 use Test::More;
 
 eval "use JSON::Any qw(DWIW)";
-if ($@) {
-    plan skip_all => "JSON::DWIW not installed: $@";
-}
+plan skip_all => "JSON::DWIW not installed: $@" if $@;
 
 diag("Testing JSON::DWIW backend");
 my ( $json, $js, $obj );

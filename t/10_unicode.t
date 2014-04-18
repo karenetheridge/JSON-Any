@@ -3,7 +3,8 @@ use strict;
 use utf8;
 use Test::More;
 
-use Test::Requires 'JSON::Any';
+eval "use JSON::Any";
+plan skip_all => "$@" if $@;
 
 $ENV{JSON_ANY_CONFIG} = "utf8=1";
 

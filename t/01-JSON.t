@@ -4,9 +4,7 @@ use Test::More;
 use Test::Without::Module qw(JSON::XS);
 
 eval "use JSON::Any qw(JSON)";
-if ($@) {
-    plan skip_all => "JSON.pm not installed: $@";
-}
+plan skip_all => "JSON.pm not installed: $@" if $@;
 
 diag("Testing JSON.pm backend");
 my ( $js, $obj );

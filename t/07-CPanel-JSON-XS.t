@@ -3,11 +3,8 @@ use strict;
 use Test::More;
 
 eval "use JSON::Any qw(CPANEL)";
-if ($@) {
-    plan skip_all => "Cpanel::JSON::XS not installed: $@";
-}
+plan skip_all => "Cpanel::JSON::XS not installed: $@" if $@;
 
-skip "Cpanel::JSON::XS not installed: $@", 1 if $@;
 diag("Testing Cpanel::JSON::XS backend");
 
 is( JSON::Any->encode({foo=>'bar'}), qq[{"foo":"bar"}] );

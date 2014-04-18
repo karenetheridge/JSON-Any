@@ -5,11 +5,8 @@ use strict;
 use Test::More;
 
 eval "use JSON::Any qw(XS)";
-if ($@) {
-    plan skip_all => "JSON::XS not installed: $@";
-}
+plan skip_all => "JSON::XS not installed: $@" if $@;
 
-skip "JSON::XS not installed: $@", 1 if $@;
 diag("Testing JSON::XS backend");
 
 is( JSON::Any->encode({foo=>'bar'}), qq[{"foo":"bar"}] );
