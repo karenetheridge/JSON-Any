@@ -1,5 +1,7 @@
 $|++;
 use strict;
+use warnings;
+
 use Test::More;
 eval "use JSON::Any qw(PP)";
 plan skip_all => "JSON::PP not installed: $@" if $@;

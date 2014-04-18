@@ -1,11 +1,13 @@
 $!++;
 use strict;
-use Data::Dumper;
+use warnings;
+
 use Test::More;
 
 eval "use JSON::Any";
 plan skip_all => "$@" if $@;
 
+use Data::Dumper;
 $Data::Dumper::Indent = 0;
 $Data::Dumper::Terse  = 1;
 

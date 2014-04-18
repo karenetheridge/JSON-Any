@@ -1,4 +1,6 @@
 use strict;
+use warnings;
+
 use Test::More;
 eval "use JSON::Any qw(Syck)";
 plan skip_all => "JSON::Syck not installed: $@" if $@;
