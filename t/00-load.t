@@ -7,12 +7,11 @@ use Test::More;
 BEGIN {
 
     # Count who's installed
-    my @order = qw(JSON::XS JSON JSON::DWIW JSON::Syck);
+    my @order = qw(Cpanel::JSON::XS JSON::XS JSON::PP JSON JSON::DWIW JSON::Syck);
     my $count = scalar grep { eval "require $_"; not $@; } @order;
 
     unless ($count) {    # need at least one
         plan skip_all => "Can't find a JSON package.";
-        exit;
     }
 
     # if we're here we have *something* that will work
