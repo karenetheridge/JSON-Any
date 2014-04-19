@@ -28,9 +28,8 @@ override _build_WriteMakefile_dump => sub {
         # we have some kind of supported JSON module, we're good
     }
     else {
-
-        # we need to have a version of JSON, go with JSON.pm as a sane default
-        $WriteMakefileArgs{PREREQ_PM}{JSON} = '2.90';
+        # we need to have a version of JSON, go with JSON::PP as a sane default
+        $WriteMakefileArgs{PREREQ_PM}{'JSON::PP'} = '0';
     }
 
 

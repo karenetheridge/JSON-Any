@@ -371,6 +371,8 @@ or
 
     $ENV{JSON_ANY_ORDER} = 'Syck XS JSON';
 
+At install time, JSON::Any will attempt to install L<JSON::PP> as a reasonable
+fallback if you do not appear have B<any> backends installed on your system.
 
 WARNING: If you call JSON::Any with an empty list
 
