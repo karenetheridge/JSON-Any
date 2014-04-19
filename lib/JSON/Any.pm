@@ -397,11 +397,11 @@ L<Types::Serialiser> package, please try upgrading L<JSON.pm|JSON> to 2.90 or hi
 =head1 DEPRECATION
 
 The original need for L<JSON::Any> has been solved (quite some time ago
-actually). If you're producing new code it is recommended to use L<JSON.pm|JSON> which
-will optionally use L<JSON::XS> for speed purposes.
+actually). If you're producing new code it is recommended to use L<JSON::MaybeXS> which
+will optionally use L<Cpanel::JSON::XS> for speed purposes.
 
 JSON::Any will continue to be maintained for compatibility with existing code,
-and frankly because the maintainer prefers the JSON::Any API.
+but for new code you should strongly consider using L<JSON::MaybeXS> instead.
 
 =head1 METHODS
 

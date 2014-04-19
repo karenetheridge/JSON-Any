@@ -9,6 +9,8 @@ Revision history for {{$dist->name}}
     - Improve error message when failing to find a suitable backend (RT#87751)
     - when no backend is available at install time, JSON::PP is used as the
       default prereq rather than JSON.pm (re RT#67967)
+    - documentation updated to recommend JSON::MaybeXS instead of JSON.pm for
+      new code
 
 1.32   2013-11-07 15:56:33 +0000
     - include dep Test::Requires in dist.ini (wolfsage)
