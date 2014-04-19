@@ -6,6 +6,7 @@ Revision history for {{$dist->name}}
     - Changes content once again included manually, rather than extracted
       directly from git! (there are release tests to ensure that the file is
       kept current.)
+    - Improve error message when failing to find a suitable backend (RT#87751)
 
 1.32   2013-11-07 15:56:33 +0000
     - include dep Test::Requires in dist.ini (wolfsage)

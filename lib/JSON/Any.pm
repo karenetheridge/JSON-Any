@@ -268,10 +268,10 @@ sub import {
     if (@order) {
         ( $handler, $encoder, $decoder ) = _try_loading(@order);
         if ( $handler && grep { "JSON::$_" eq $handler } @deprecated ) {
-            my $last = pop @default;
+            my @upgrade_to = grep { my $mod = $_; !grep { $mod eq $_ } @deprecated } @order;
+            @upgrade_to = @default if not @upgrade_to;
             carp "Found deprecated package $handler. Please upgrade to ",
-              join ', ' => @default,
-              "or $last";
+                _module_name_list(@upgrade_to);
         }
     }
     else {
@@ -279,20 +279,26 @@ sub import {
         unless ($handler) {
             ( $handler, $encoder, $decoder ) = _try_loading(@deprecated);
             if ($handler) {
-                my $last = pop @default;
                 carp "Found deprecated package $handler. Please upgrade to ",
-                  join ', ' => @default,
-                  "or $last";
+                  _module_name_list(@default);
             }
         }
     }
+
     unless ($handler) {
-        my $last = pop @default;
-        croak "Couldn't find a JSON package. Need ", join ', ' => @default,
-          "or $last";
+        croak "Couldn't find a JSON package. Need ", _module_name_list(@order ? @order : @default);
     }
     croak "Couldn't find a decoder method." unless $decoder;
     croak "Couldn't find a encoder method." unless $encoder;
+}
+
+sub _module_name_list {
+    my @list = map { _module_name($_) } @_;
+    my $last = pop @list;
+    return (@list
+        ? (join(', ' => @list), " or $last")
+        : $last
+    );
 }
 
 =head1 SYNOPSIS
