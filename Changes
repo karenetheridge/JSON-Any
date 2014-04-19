@@ -1,6 +1,8 @@
 Revision history for {{$dist->name}}
 
 {{$NEXT}}
+
+1.33      2014-04-19 05:58:46Z
     - line numbers in shipped code are now almost the same (within 3) as the
       repository source, for easier debugging
     - Changes content once again included manually, rather than extracted
