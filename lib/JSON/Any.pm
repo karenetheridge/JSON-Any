@@ -243,8 +243,7 @@ sub _try_loading {
     ( $handler, $encoder, $decoder ) = ();
     foreach my $mod (@order) {
         my $testmod = _module_name($mod);
-        eval "require $testmod";
-        unless ($@) {
+        if (eval "require $testmod; 1") {
             $handler = $testmod;
             my $key = _make_key($handler);
             next unless exists $conf{$key};
@@ -288,8 +287,8 @@ sub import {
     unless ($handler) {
         croak "Couldn't find a JSON package. Need ", _module_name_list(@order ? @order : @default);
     }
-    croak "Couldn't find a decoder method." unless $decoder;
-    croak "Couldn't find a encoder method." unless $encoder;
+    croak "Couldn't find a working decoder method (but found handler $handler ", $handler->VERSION, ")." unless $decoder;
+    croak "Couldn't find a working encoder method (but found handler $handler ", $handler->VERSION, ")." unless $encoder;
 }
 
 sub _module_name_list {
