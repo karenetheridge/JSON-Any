@@ -67,7 +67,7 @@ $js = JSON::Any->objToJson($obj);
 is($js,'{"foo":" "}');
 
 # testing the truth
-warn JSON::Any->true;
+note 'truth is ', JSON::Any->true;
 $obj = { foo => JSON::Any->true };
 $js = JSON::Any->objToJson($obj);
 is($js,'{"foo":true}');
