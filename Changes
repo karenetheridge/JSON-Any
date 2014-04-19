@@ -7,6 +7,18 @@ Revision history for {{$dist->name}}
       directly from git! (there are release tests to ensure that the file is
       kept current.)
 
+1.32   2013-11-07 15:56:33 +0000
+    - include dep Test::Requires in dist.ini (wolfsage)
+
+1.31   2013-11-06 21:46:52 +0000
+    - test string escapes with JSON::PP (ilmari)
+    - support added for JSON::XS version 3 (ilmari)
+    - documentation notes added regarding incompatibility issues with
+      JSON::XS 3.x and JSON.pm < 2.90
+    - tests for more backends
+    - fix the tests to properly exclude JSON::XS unless we are explicitly
+      testing it
+
 1.30    2013-06-15
     * Add support for Cpanel::JSON::XS and JSON::PP. Fixes RT#85424 & RT#67967. (perigrin)
     * Fix documentation bug RT#86065.
