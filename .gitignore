@@ -1,6 +1,6 @@
 /.ackrc
 /.build/
-!.gitignore
+/!.gitignore
 /.latest
 /JSON-Any-*/
 /JSON-Any-*.tar.gz
