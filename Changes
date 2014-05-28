@@ -1,6 +1,8 @@
 Revision history for {{$dist->name}}
 
 {{$NEXT}}
+
+1.34      2014-05-28 21:31:20Z
     - remove test dependency on Devel::StringInfo, which requires Moose
       (RT#96034)
 
