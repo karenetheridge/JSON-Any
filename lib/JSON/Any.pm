@@ -302,6 +302,13 @@ sub _module_name_list {
 
 =head1 SYNOPSIS
 
+    use JSON::Any;
+    my $j = JSON::Any->new;
+    my $json = $j->objToJson({foo=>'bar', baz=>'quux'});
+    my $obj = $j->jsonToObj($json);
+
+=head1 DESCRIPTION
+
 This module tries to provide a coherent API to bring together the various JSON
 modules currently on CPAN. This module will allow you to code to any JSON API
 and have it work regardless of which JSON module is actually installed.
