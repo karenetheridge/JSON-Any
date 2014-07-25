@@ -5,6 +5,7 @@ use strict;
 use Carp qw(croak carp);
 
 # ABSTRACT: Wrapper Class for the various JSON classes (DEPRECATED)
+# KEYWORDS: json serialization serialisation wrapper abstraction
 
 our $UTF8;
 
