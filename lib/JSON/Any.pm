@@ -4,7 +4,7 @@ use warnings;
 use strict;
 use Carp qw(croak carp);
 
-# ABSTRACT: Wrapper Class for the various JSON classes.
+# ABSTRACT: Wrapper Class for the various JSON classes (DEPRECATED)
 
 our $UTF8;
 
@@ -307,6 +307,15 @@ sub _module_name_list {
     my $json = $j->objToJson({foo=>'bar', baz=>'quux'});
     my $obj = $j->jsonToObj($json);
 
+=head1 DEPRECATION NOTICE
+
+The original need for L<JSON::Any> has been solved (quite some time ago
+actually). If you're producing new code it is recommended to use L<JSON::MaybeXS> which
+will optionally use L<Cpanel::JSON::XS> for speed purposes.
+
+JSON::Any will continue to be maintained for compatibility with existing code,
+but for new code you should strongly consider using L<JSON::MaybeXS> instead.
+
 =head1 DESCRIPTION
 
 This module tries to provide a coherent API to bring together the various JSON
@@ -399,15 +408,6 @@ via C<< use JSON::Any qw(JSON); >> or the C<JSON_ANY_ORDER> environment variable
 
 If you run into an issue where you're getting recursive inheritance errors in a
 L<Types::Serialiser> package, please try upgrading L<JSON.pm|JSON> to 2.90 or higher.
-
-=head1 DEPRECATION
-
-The original need for L<JSON::Any> has been solved (quite some time ago
-actually). If you're producing new code it is recommended to use L<JSON::MaybeXS> which
-will optionally use L<Cpanel::JSON::XS> for speed purposes.
-
-JSON::Any will continue to be maintained for compatibility with existing code,
-but for new code you should strongly consider using L<JSON::MaybeXS> instead.
 
 =head1 METHODS
 
