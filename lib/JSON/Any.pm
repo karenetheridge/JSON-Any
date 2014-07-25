@@ -3,6 +3,7 @@ package JSON::Any;
 use warnings;
 use strict;
 use Carp qw(croak carp);
+use namespace::clean;
 
 # ABSTRACT: Wrapper Class for the various JSON classes (DEPRECATED)
 # KEYWORDS: json serialization serialisation wrapper abstraction
