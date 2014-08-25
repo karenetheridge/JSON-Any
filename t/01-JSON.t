@@ -1,4 +1,3 @@
-$|++;
 use strict;
 use Test::More;
 use Test::Without::Module qw(JSON::XS);
