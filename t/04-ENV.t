@@ -18,13 +18,18 @@ SKIP: {
 }
 
 SKIP: {
-    eval { require JSON::XS; };
-    skip "JSON::XS not installed: $@", 1 if $@;
+    my $has_cpanel = eval { require Cpanel::JSON::XS; 1 };
+    my $has_json_xs; $has_json_xs = eval { require JSON::XS; 1 } if not $has_cpanel;
+    skip 'Cpanel::JSON::XS nor JSON::XS are installed', 1 if $@;
 
-    $ENV{JSON_ANY_ORDER} = qw(XS);
+    $ENV{JSON_ANY_ORDER} = 'CPANEL XS';
 
     JSON::Any->import();
-    is( JSON::Any->handlerType, 'JSON::XS' );
+    is(
+        JSON::Any->handlerType,
+        ($has_cpanel ? 'Cpanel::' : '') . 'JSON::XS',
+        'got the right handlerType',
+    );
 
     my ($json);
     ok( $json = JSON::Any->new() );
