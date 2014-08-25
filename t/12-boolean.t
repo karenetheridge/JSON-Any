@@ -4,10 +4,6 @@ use warnings;
 use Test::More;
 use JSON::Any;
 
-use Data::Dumper;
-$Data::Dumper::Indent = 0;
-$Data::Dumper::Terse  = 1;
-
 # JSON::Syck doesn't support bools
 my @backends = qw(XS JSON DWIW);
 
