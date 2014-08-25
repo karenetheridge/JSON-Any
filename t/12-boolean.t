@@ -2,9 +2,7 @@ use strict;
 use warnings;
 
 use Test::More;
-
-eval "use JSON::Any";
-plan skip_all => "$@" if $@;
+use JSON::Any;
 
 use Data::Dumper;
 $Data::Dumper::Indent = 0;
