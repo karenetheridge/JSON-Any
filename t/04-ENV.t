@@ -33,7 +33,7 @@ SKIP: {
 
     my ($json);
     ok( $json = JSON::Any->new() );
-    eval { $json->encode("ü") };
+    eval { $json->encode("dahut") };
     ok( $@, 'trapped a failure' );
     undef $@;
     $ENV{JSON_ANY_CONFIG} = 'allow_nonref=1';
