@@ -422,7 +422,7 @@ L<Types::Serialiser> package, please try upgrading L<JSON.pm|JSON> to 2.90 or hi
 Will take any of the parameters for the underlying system and pass them
 through. However these values don't map between JSON modules, so, from a
 portability standpoint this is really only helpful for those parameters that
-happen to have the same name. This will be addressed in a future release.
+happen to have the same name.
 
 The one parameter that is universally supported (to the extent that is
 supported by the underlying JSON modules) is C<utf8>. When this parameter is
