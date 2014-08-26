@@ -447,11 +447,13 @@ sub new {
     my $self  = bless [], $class;
     my $key   = _make_key($handler);
     if ( my $creator = $conf{$key}->{create_object} ) {
-        my @config = @_;
+        my @config;
+        # undocumented! and yet, people are using this...
         if ( $ENV{JSON_ANY_CONFIG} ) {
             push @config, map { split /=/, $_ } split /,\s*/,
               $ENV{JSON_ANY_CONFIG};
         }
+        push @config, @_;
         $creator->( $self, my $conf = {@config} );
         $self->[UTF8] = $conf->{utf8};
     }

@@ -37,6 +37,14 @@ plan skip_all => 'Cpanel::JSON::XS nor JSON::XS are installed', 1
         undef,
         'no failure with config change',
     );
+
+    ok( $json = JSON::Any->new(allow_nonref => 0), 'got another JSON::Any object' );
+
+    like(
+        exception { $json->encode("dahut") },
+        qr/use allow_nonref/,
+        'trapped a failure because the constructor option overrides the environment variable',
+    );
 }
 
 done_testing;

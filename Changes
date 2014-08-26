@@ -2,6 +2,7 @@ Revision history for {{$dist->name}}
 
 {{$NEXT}}
     - many improvements to tests and their coverage
+    - $ENV{JSON_ANY_CONFIG} can no longer override constructor arguments
 
 1.35      2014-08-16 00:51:05Z
     - clarify deprecation status in documentation
