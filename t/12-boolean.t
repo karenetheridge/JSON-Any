@@ -2,6 +2,7 @@ use strict;
 use warnings;
 
 use Test::More;
+use Test::Fatal;
 use JSON::Any;
 
 # JSON::Syck doesn't support bools
@@ -37,13 +38,22 @@ sub test {
         note "handler is " . ( ref( $j->handler ) || $j->handlerType );
 
         for my $bool ( qw/true false/ ) {
-            my $data = eval { JSON::Any->jsonToObj($bool) };
-            ok ( !$@,  "inflated '$bool'" );
-            ok ( eval { $data xor !Boolean->$bool }, "$bool evaluates to $bool" );
+            my $data;
+            is(
+                exception { $data = JSON::Any->jsonToObj($bool) },
+                undef,
+                "inflated '$bool'",
+            );
 
-            $data = eval { JSON::Any->$bool };
-            ok ( !$@, "JSON::Any->$bool returned a value" );
-            ok ( eval { $data xor !Boolean->$bool }, "JSON::Any->$bool evaluates to $bool" );
+            cmp_ok( $data, 'xor', !Boolean->$bool, "$bool evaluates to $bool" );
+
+            is(
+                exception { $data = JSON::Any->$bool },
+                undef,
+                "JSON::Any->$bool returned a value",
+            );
+
+            cmp_ok( $data, 'xor', !Boolean->$bool, "JSON::Any->$bool evaluates to $bool" );
         }
     };
 }

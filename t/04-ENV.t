@@ -30,14 +30,21 @@ SKIP: {
     );
 
     my ($json);
-    ok( $json = JSON::Any->new() );
-    eval { $json->encode("dahut") };
-    ok( $@, 'trapped a failure' );
-    undef $@;
+    ok( $json = JSON::Any->new(), 'got a JSON::Any object' );
+    like(
+        exception { $json->encode("dahut") },
+        qr/use allow_nonref/,
+        'trapped a failure because of a non-reference',
+    );
+
     $ENV{JSON_ANY_CONFIG} = 'allow_nonref=1';
-    ok( $json = JSON::Any->new() );
-    ok( $json->encode("dahut"), qq["dahut"] );
-    is( $@, undef, 'no failure' );
+    ok( $json = JSON::Any->new(), 'got another JSON::Any object' );
+
+    is(
+        exception { ok( $json->encode("dahut"), 'got the same data back again' ) },
+        undef,
+        'no failure with config change',
+    );
 }
 
 done_testing;
