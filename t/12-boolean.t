@@ -5,7 +5,7 @@ use Test::More;
 use JSON::Any;
 
 # JSON::Syck doesn't support bools
-my @backends = qw(XS JSON DWIW);
+my @backends = qw(CPANEL XS JSON DWIW);
 
 # make sure we test the JSON::PP backend instead of XS, twice
 $ENV{PERL_JSON_BACKEND} = 0;
