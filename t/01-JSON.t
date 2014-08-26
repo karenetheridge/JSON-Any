@@ -12,6 +12,8 @@ ok(my $json_obj = JSON::Any->new());
 isa_ok($json_obj, 'JSON::Any');
 isa_ok($json_obj->handler, 'JSON');
 
+is(JSON::Any->handlerType, 'JSON');
+
 $js  = q|{}|;
 $obj = $json_obj->jsonToObj($js);
 $js  = $json_obj->objToJson($obj);

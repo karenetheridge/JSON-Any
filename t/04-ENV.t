@@ -2,24 +2,16 @@ use strict;
 use warnings;
 
 use Test::More;
+use Test::Fatal;
 use JSON::Any;
 
-SKIP: {
-    eval { require JSON; };
-    skip "JSON not installed: $@", 1 if $@;
+my $has_cpanel = eval { require Cpanel::JSON::XS; 1 };
+my $has_json_xs; $has_json_xs = eval { require JSON::XS; 1 } if not $has_cpanel;
 
-    $ENV{JSON_ANY_ORDER} = qw(JSON);
-    JSON::Any->import();
-    skip "JSON not installed: $@", 1 if $@;
-    is_deeply( $ENV{JSON_ANY_ORDER}, qw(JSON) );
-    is( JSON::Any->handlerType, 'JSON' );
-}
+plan skip_all => 'Cpanel::JSON::XS nor JSON::XS are installed', 1
+    if not $has_cpanel and not $has_json_xs;
 
-SKIP: {
-    my $has_cpanel = eval { require Cpanel::JSON::XS; 1 };
-    my $has_json_xs; $has_json_xs = eval { require JSON::XS; 1 } if not $has_cpanel;
-    skip 'Cpanel::JSON::XS nor JSON::XS are installed', 1 if $@;
-
+{
     $ENV{JSON_ANY_ORDER} = 'CPANEL XS';
 
     JSON::Any->import();
