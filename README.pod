@@ -8,7 +8,7 @@ JSON::Any - Wrapper Class for the various JSON classes (DEPRECATED)
 
 =head1 VERSION
 
-version 1.37
+version 1.38
 
 =head1 SYNOPSIS
 

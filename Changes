@@ -1,6 +1,8 @@
 Revision history for {{$dist->name}}
 
 {{$NEXT}}
+
+1.38      2014-09-29 16:42:08Z
     - real fix to tests from 1.37
 
 1.37      2014-09-29 16:29:44Z
