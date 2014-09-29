@@ -1,6 +1,8 @@
 Revision history for {{$dist->name}}
 
 {{$NEXT}}
+    - fix tests to use a higher precedence operator, to avoid confusing newer
+      Test::More::cmp_ok.
 
 1.36      2014-08-26 05:54:35Z
     - many improvements to tests and their coverage
