@@ -1,6 +1,7 @@
 Revision history for {{$dist->name}}
 
 {{$NEXT}}
+    - mark this distribution as deprecated in metadata
 
 1.38      2014-09-29 16:42:08Z
     - real fix to tests from 1.37

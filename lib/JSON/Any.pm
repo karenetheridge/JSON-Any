@@ -5,7 +5,7 @@ use strict;
 use Carp qw(croak carp);
 use namespace::clean;
 
-# ABSTRACT: Wrapper Class for the various JSON classes (DEPRECATED)
+# ABSTRACT: (DEPRECATED) Wrapper Class for the various JSON classes
 # KEYWORDS: json serialization serialisation wrapper abstraction
 
 our $UTF8;
