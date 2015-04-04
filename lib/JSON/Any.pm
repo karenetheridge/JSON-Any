@@ -416,9 +416,7 @@ L<Types::Serialiser> package, please try upgrading L<JSON.pm|JSON> to 2.90 or hi
 
 =head1 METHODS
 
-=over
-
-=item C<new>
+=head2 C<new>
 
 =for :stopwords recognised unicode
 
@@ -441,8 +439,6 @@ The actual output will vary, for example L<JSON> will encode and decode
 unicode chars (the resulting JSON is not unicode) whereas L<JSON::XS> will emit
 unicode JSON.
 
-=back
-
 =cut
 
 sub new {
@@ -463,13 +459,9 @@ sub new {
     return $self;
 }
 
-=over
-
-=item C<handlerType>
+=head2 C<handlerType>
 
 Takes no arguments, returns a string indicating which JSON Module is in use.
-
-=back
 
 =cut
 
@@ -478,15 +470,11 @@ sub handlerType {
     $handler;
 }
 
-=over
-
-=item C<handler>
+=head2 C<handler>
 
 Takes no arguments, if called on an object returns the internal JSON::*
 object in use.  Otherwise returns the JSON::* package we are using for
 class methods.
-
-=back
 
 =cut
 
@@ -498,14 +486,10 @@ sub handler {
     return $handler;
 }
 
-=over
-
-=item C<true>
+=head2 C<true>
 
 Takes no arguments, returns the special value that the internal JSON
 object uses to map to a JSON C<true> boolean.
-
-=back
 
 =cut
 
@@ -514,14 +498,10 @@ sub true {
     return $conf{$key}->{get_true}->();
 }
 
-=over
-
-=item C<false>
+=head2 C<false>
 
 Takes no arguments, returns the special value that the internal JSON
 object uses to map to a JSON C<false> boolean.
-
-=back
 
 =cut
 
@@ -530,14 +510,10 @@ sub false {
     return $conf{$key}->{get_false}->();
 }
 
-=over
-
-=item C<objToJson>
+=head2 C<objToJson>
 
 Takes a single argument, a hashref to be converted into JSON.
 It returns the JSON text in a scalar.
-
-=back
 
 =cut
 
@@ -572,33 +548,24 @@ sub objToJson {
     return $json;
 }
 
-=over
+=head2 C<to_json>
 
-=item C<to_json>
+=head2 C<Dump>
 
-=item C<Dump>
-
-=item C<encode>
+=head2 C<encode>
 
 Aliases for C<objToJson>, can be used interchangeably, regardless of the
 underlying JSON module.
-
-=back
-
 =cut
 
 *to_json = \&objToJson;
 *Dump    = \&objToJson;
 *encode  = \&objToJson;
 
-=over
-
-=item C<jsonToObj>
+=head2 C<jsonToObj>
 
 Takes a single argument, a string of JSON text to be converted
 back into a hashref.
-
-=back
 
 =cut
 
@@ -628,18 +595,14 @@ sub jsonToObj {
     $handler->can($decoder)->($obj);
 }
 
-=over
+=head2 C<from_json>
 
-=item C<from_json>
+=head2 C<Load>
 
-=item C<Load>
-
-=item C<decode>
+=head2 C<decode>
 
 Aliases for C<jsonToObj>, can be used interchangeably, regardless of the
 underlying JSON module.
-
-=back
 
 =cut
 
