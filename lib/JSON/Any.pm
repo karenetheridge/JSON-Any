@@ -2,6 +2,9 @@ package JSON::Any;
 
 use warnings;
 use strict;
+
+our $VERSION = '1.39';
+
 use Carp qw(croak carp);
 use namespace::clean;
 
