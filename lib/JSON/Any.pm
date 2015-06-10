@@ -3,7 +3,7 @@ package JSON::Any;
 use warnings;
 use strict;
 
-our $VERSION = '1.39';
+our $VERSION = '1.40';
 
 use Carp qw(croak carp);
 
