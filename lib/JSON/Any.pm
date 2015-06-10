@@ -6,7 +6,6 @@ use strict;
 our $VERSION = '1.39';
 
 use Carp qw(croak carp);
-use namespace::clean;
 
 # ABSTRACT: (DEPRECATED) Wrapper Class for the various JSON classes
 # KEYWORDS: json serialization serialisation wrapper abstraction
@@ -609,6 +608,11 @@ underlying JSON module.
 *from_json = \&jsonToObj;
 *Load      = \&jsonToObj;
 *decode    = \&jsonToObj;
+
+{
+    no strict 'refs';
+    delete @{__PACKAGE__.'::'}{qw(croak carp)};
+}
 
 1;
 __END__

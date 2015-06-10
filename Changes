@@ -2,6 +2,7 @@ Revision history for JSON-Any
 
 {{$NEXT}}
     - mark this distribution as deprecated in metadata
+    - drop dependency on namespace::clean
 
 1.38      2014-09-29 16:42:08Z
     - real fix to tests from 1.37
