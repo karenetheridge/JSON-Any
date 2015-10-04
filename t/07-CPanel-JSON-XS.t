@@ -1,8 +1,8 @@
-use utf8;
 use strict;
 use warnings;
 
 use Test::More;
+use if "$]" >= '5.008', 'utf8';
 
 eval "use JSON::Any qw(CPANEL)";
 plan skip_all => "Cpanel::JSON::XS not installed: $@" if $@;
