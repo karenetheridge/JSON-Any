@@ -317,8 +317,12 @@ The original need for L<JSON::Any> has been solved (quite some time ago
 actually). If you're producing new code it is recommended to use L<JSON::MaybeXS> which
 will optionally use L<Cpanel::JSON::XS> for speed purposes.
 
-JSON::Any will continue to be maintained for compatibility with existing code,
+JSON::Any will continue to be maintained for compatibility with existing code
+(as well as for rare cases where you want L<JSON::DWIW> as a backend),
 but for new code you should strongly consider using L<JSON::MaybeXS> instead.
+
+For more information about the various options and which are preferred, see
+L<Matt Trout's analysis|http://shadow.cat/blog/matt-s-trout/mstpan-7>.
 
 =head1 DESCRIPTION
 
@@ -626,11 +630,11 @@ __END__
 This module came about after discussions on irc.perl.org about the fact
 that there were now six separate JSON perl modules with different interfaces.
 
-In the spirit of Class::Any, JSON::Any was created with the considerable
+In the spirit of L<Class::Any>, JSON::Any was created with the considerable
 help of Matt 'mst' Trout.
 
 Simon Wistow graciously supplied a patch for backwards compatibility with JSON::XS
-versions previous to 2.01
+versions previous to 2.01.
 
 San Dimas High School Football Rules!
 
