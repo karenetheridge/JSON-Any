@@ -220,6 +220,10 @@ BEGIN {
     $conf{json_xs_3} = { %{ $conf{json_xs_2} } };
     $conf{json_xs_3}{get_true}  = sub { return Types::Serialiser::true(); };
     $conf{json_xs_3}{get_false} = sub { return Types::Serialiser::false(); };
+
+    # JSON::XS 4 is almost the same as JSON::XS 3. It only enables
+    # allow_nonref by default.
+    $conf{json_xs_4} = { %{ $conf{json_xs_3} } };
 }
 
 sub _make_key {
