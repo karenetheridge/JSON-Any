@@ -207,9 +207,17 @@ BEGIN {
     );
 
     # JSON::PP has the same API as JSON.pm v2
-    $conf{json_pp} = { %{ $conf{json_2} } };
-    $conf{json_pp}{get_true}  = sub { return JSON::PP::true(); };
-    $conf{json_pp}{get_false} = sub { return JSON::PP::false(); };
+    $conf{json_pp_2} = { %{ $conf{json_2} } };
+    $conf{json_pp_2}{get_true}  = sub { return JSON::PP::true(); };
+    $conf{json_pp_2}{get_false} = sub { return JSON::PP::false(); };
+
+    # JSON::PP 3.99 enables allow_nonref by default.
+    $conf{json_pp_3} = { %{ $conf{json_pp_2} } };
+    $conf{json_pp_3}{create_object} = sub {
+        $conf{json_pp_2}{create_object}->($_[0], {allow_nonref => 0, %{$_[1]}});
+    };
+
+    $conf{json_pp_4} = { %{ $conf{json_pp_3} } };
 
     # Cpanel::JSON::XS is a fork of JSON::XS (currently)
     $conf{cpanel_json_xs} = { %{ $conf{json_xs_2} } };
@@ -220,12 +228,19 @@ BEGIN {
     $conf{json_xs_3} = { %{ $conf{json_xs_2} } };
     $conf{json_xs_3}{get_true}  = sub { return Types::Serialiser::true(); };
     $conf{json_xs_3}{get_false} = sub { return Types::Serialiser::false(); };
+
+    # JSON::XS 4 is almost the same as JSON::XS 3. It only enables
+    # allow_nonref by default.
+    $conf{json_xs_4} = { %{ $conf{json_xs_3} } };
+    $conf{json_xs_4}{create_object} = sub {
+        $conf{json_xs_3}{create_object}->($_[0], {allow_nonref => 0, %{$_[1]}});
+    };
 }
 
 sub _make_key {
     my $handler = shift;
     ( my $key = lc($handler) ) =~ s/::/_/g;
-    if ( 'json_xs' eq $key || 'json' eq $key ) {
+    if ( 'json_xs' eq $key || 'json_pp' eq $key || 'json' eq $key ) {
         no strict 'refs';
         $key .= "_" . ( split /\./, ${"$handler\::VERSION"} )[0];
     }
