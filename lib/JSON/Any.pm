@@ -217,6 +217,10 @@ BEGIN {
       };
     }
 
+    # JSON.pm v3 and v4 are the same as v2
+    $conf{json_3} = { %{ $conf{json_2} } };
+    $conf{json_4} = { %{ $conf{json_3} } };
+
     # Cpanel::JSON::XS is a fork of JSON::XS (currently)
     $conf{cpanel_json_xs} = { %{ $conf{json_xs_2} } };
     $conf{cpanel_json_xs}{get_true}  = sub { return Cpanel::JSON::XS::true(); };
@@ -226,6 +230,9 @@ BEGIN {
     $conf{json_xs_3} = { %{ $conf{json_xs_2} } };
     $conf{json_xs_3}{get_true}  = sub { return Types::Serialiser::true(); };
     $conf{json_xs_3}{get_false} = sub { return Types::Serialiser::false(); };
+
+    # JSON::XS v4 is the same as v3
+    $conf{json_xs_4} = { %{ $conf{json_xs_3} } };
 }
 
 sub _make_key {
