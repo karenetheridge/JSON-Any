@@ -1,10 +1,10 @@
 use strict;
 use warnings;
 
+use utf8;
 use Test::More 0.88;
-use if "$]" >= '5.008', 'utf8';
-
 use JSON::Any;
+
 $ENV{JSON_ANY_CONFIG} = "utf8=1";
 
 sub run_tests_for {
