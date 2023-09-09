@@ -434,7 +434,7 @@ L<Types::Serialiser> package, please try upgrading L<JSON.pm|JSON> to 2.90 or hi
 
 =head2 C<new>
 
-=for :stopwords recognised unicode
+=for stopwords recognised unicode
 
 Will take any of the parameters for the underlying system and pass them
 through. However these values don't map between JSON modules, so, from a
@@ -637,7 +637,7 @@ __END__
 
 =head1 ACKNOWLEDGEMENTS
 
-=for :stopwords Dimas Wistow mst
+=for stopwords Dimas Wistow mst
 
 This module came about after discussions on irc.perl.org about the fact
 that there were now six separate JSON perl modules with different interfaces.
