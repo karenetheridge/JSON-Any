@@ -113,7 +113,7 @@ BEGIN {
                 $self->[ENCODER] = 'to_json';
                 $self->[DECODER] = 'from_json';
                 $self->[HANDLER] =
-                  $handler->new( { map { $_ => $conf->{$_} } @params } );
+                  $handler->new( { map +($_ => $conf->{$_}), @params } );
             },
         },
         json_xs_1 => {
@@ -283,7 +283,7 @@ sub import {
 
     if (@order) {
         ( $handler, $encoder, $decoder ) = _try_loading(@order);
-        if ( $handler && grep { "JSON::$_" eq $handler } @deprecated ) {
+        if ( $handler && grep "JSON::$_" eq $handler, @deprecated ) {
             my @upgrade_to = grep { my $mod = $_; !grep { $mod eq $_ } @deprecated } @order;
             @upgrade_to = @default if not @upgrade_to;
             carp "Found deprecated package $handler. Please upgrade to ",
@@ -309,7 +309,7 @@ sub import {
 }
 
 sub _module_name_list {
-    my @list = map { _module_name($_) } @_;
+    my @list = map _module_name($_), @_;
     my $last = pop @list;
     return (@list
         ? (join(', ' => @list), " or $last")
@@ -465,8 +465,7 @@ sub new {
         my @config;
         # undocumented! and yet, people are using this...
         if ( $ENV{JSON_ANY_CONFIG} ) {
-            push @config, map { split /=/, $_ } split /,\s*/,
-              $ENV{JSON_ANY_CONFIG};
+            push @config, map split(/=/, $_), split(/,\s*/, $ENV{JSON_ANY_CONFIG});
         }
         push @config, @_;
         $creator->( $self, my $conf = {@config} );
