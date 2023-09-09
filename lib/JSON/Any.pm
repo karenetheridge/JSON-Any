@@ -56,13 +56,12 @@ BEGIN {
                 $self->[HANDLER] = $obj;
             },
         },
-        json_2 => {
+        json_pp => {
             encoder       => 'encode_json',
             decoder       => 'decode_json',
-            get_true      => sub { return JSON::true(); },
-            get_false     => sub { return JSON::false(); },
+            get_true      => sub { return JSON::PP::true(); },
+            get_false     => sub { return JSON::PP::false(); },
             create_object => sub {
-                JSON->import( '-support_by_pp', '-no_export' );
                 my ( $self, $conf ) = @_;
                 my @params = qw(
                   ascii
@@ -206,10 +205,21 @@ BEGIN {
         },
     );
 
-    # JSON::PP has the same API as JSON.pm v2
-    $conf{json_pp} = { %{ $conf{json_2} } };
-    $conf{json_pp}{get_true}  = sub { return JSON::PP::true(); };
-    $conf{json_pp}{get_false} = sub { return JSON::PP::false(); };
+    # JSON.pm v2 has the same API as JSON::PP
+    $conf{json_2} = { %{ $conf{json_pp} } };
+    $conf{json_2}{get_true}  = sub { return JSON::true(); };
+    $conf{json_2}{get_false} = sub { return JSON::false(); };
+    {
+      my $create = $conf{json_2}{create_object};
+      $conf{json_2}{create_object} = sub {
+        JSON->import( '-support_by_pp', '-no_export' );
+        goto &$create;
+      };
+    }
+
+    # JSON.pm v3 and v4 are the same as v2
+    $conf{json_3} = { %{ $conf{json_2} } };
+    $conf{json_4} = { %{ $conf{json_3} } };
 
     # Cpanel::JSON::XS is a fork of JSON::XS (currently)
     $conf{cpanel_json_xs} = { %{ $conf{json_xs_2} } };
@@ -220,6 +230,9 @@ BEGIN {
     $conf{json_xs_3} = { %{ $conf{json_xs_2} } };
     $conf{json_xs_3}{get_true}  = sub { return Types::Serialiser::true(); };
     $conf{json_xs_3}{get_false} = sub { return Types::Serialiser::false(); };
+
+    # JSON::XS v4 is the same as v3
+    $conf{json_xs_4} = { %{ $conf{json_xs_3} } };
 }
 
 sub _make_key {
