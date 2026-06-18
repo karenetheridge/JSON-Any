@@ -1,6 +1,8 @@
 Revision history for JSON-Any
 
 {{$NEXT}}
+    - fix test error with allow_non-ref and Cpanel::JSON::XS >= 4.42
+      (RT#179192)
 
 1.40      2023-09-09 21:59:01Z
     - fix issues on perl 5.39.1 with 'import' subs
