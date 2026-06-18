@@ -443,8 +443,9 @@ happen to have the same name.
 
 The one parameter that is universally supported (to the extent that is
 supported by the underlying JSON modules) is C<utf8>. When this parameter is
-enabled all resulting JSON will be marked as unicode, and all unicode strings
-in the input data structure will be preserved as such.
+enabled, all unicode strings in the input data structure will be preserved as such.
+Note that this is the B<OPPOSITE> of the meaning of the underlying C<utf8> option
+in many backends!
 
 Also note that the C<allow_blessed> parameter is recognised by all the modules
 that throw exceptions when a blessed reference is given them meaning that
