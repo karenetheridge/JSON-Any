@@ -1,5 +1,7 @@
 Revision history for JSON-Any
 
+{{$NEXT}}
+
 1.41      2026-06-18 03:44:01Z
     - fix test error with allow_non-ref and Cpanel::JSON::XS >= 4.42
       (RT#179192)
