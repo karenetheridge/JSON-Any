@@ -2,5 +2,6 @@
 /.build/
 /!.gitignore
 /.latest
+/.prove
 /JSON-Any-*/
 /JSON-Any-*.tar.gz
