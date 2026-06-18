@@ -640,6 +640,8 @@ __END__
 
 =for stopwords Dimas Wistow mst
 
+=for Pod::Coverage DECODER ENCODER HANDLER
+
 This module came about after discussions on irc.perl.org about the fact
 that there were now six separate JSON perl modules with different interfaces.
 
